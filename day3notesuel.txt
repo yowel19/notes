@@ -1,0 +1,105 @@
+How to Create Default Route Cisco/PC/EndDevices:
+p1:
+config T
+ip route 0.0.0.0  0.0.0.0 10.2.1.1 1
+ip route 0.0.0.0  0.0.0.0 10.2.1.2 2
+!floating Static Routes
+do sh ip route static
+
+
+p2:
+config t
+ip route 0.0.0.0 0.0.0.0 10.2.1.2 1
+ip route 0.0.0.0 0.0.0.0 10.2.1.1 5
+do sh ip route static
+end
+
+!@I4
+conf t
+ ipv6 unicast-routing
+ interface e0/0
+ no shutdown
+ ipv6 add 2001:db8:a0::81/121
+ end
+ping 2001:db8:a0::FF
+
+!@R4
+conf t
+ ipv6 unicast-routing
+ interface e0/0
+ no shutdown
+ ipv6 add 2001:db8:a0::FF/121
+ end
+
+
+First Valid: 2001:db8:0:20::1/60
+Last non-anycast:2001:db8:0:2f:ffff:ffff:ffff:ff7f/60
+First Anycast: (Last 128 IPs) 2001:db8:0:2f:ffff:ffff:ffff:ff80/60
+Last Valid / Last anycast: 2001:db8:0:2f:ffff:ffff:ffff:ffff/60
+
+80 - FF = Anycast range
+7F - last non anycast
+
+!@I3
+conf t
+ ipv6 unicast-routing
+ interface e0/0
+ no shutdown
+ ipv6 add 2001:db8:0:20::1/60
+ end
+
+!@R3
+conf t
+ ipv6 unicast-routing
+ interface e0/0
+ no shutdown
+ ipv6 add 2001:db8:0:2f:ffff:ffff:ffff:ffff/60
+ end
+
+
+*****
+3 ways to apply ipv6
+1. Manual
+2. IPV6 gua using a unique 64-bit interface identifier
+3. DHCPv6
+   ipv6 add dhcp
+
+SLAA
+IP add autoconfig
+
+
+!@I2
+!@using a 64-bit interface identifier
+conf t
+ ipv6 unicast-routing
+ interface e0/0
+ no shutdown
+ ipv6 add 2001:db8:0:20::/60 eui-64
+ end
+
+
+!@I1
+conf t
+ ipv6 unicast-routing
+ interface e0/0
+ no shutdown
+ ipv6 add 2001:db10::/64 eui-64
+ end
+
+!@R1
+conf t
+ ipv6 unicast-routing
+ interface e0/0
+ no shutdown
+ ipv6 add autoconfig
+ end
+
+******
+ASSIGNMENT
+
+Design an IPV6 network for 780 users using the available ipv6 address space of
+2001:db8:b:efe:1::/64
+
+Subnet for 78 sites using 2001:db8:2:5::/98 determine the 3rd subnet
+
+C:78 = 7 bits
