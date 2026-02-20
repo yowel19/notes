@@ -1,0 +1,37 @@
+Unicast - Destination mac: Normal 1:1
+Broadcast - Destination mac: 12 :FF: 1:255
+Multicast - Destination mac: 01.00.5e 1:224
+
+Kaibigan sted and smt, stav (stab) ka kasi stnv (standby) kalang
+STED - switchport trunk encap dot1q
+SMT - switchport mode trunk
+STAV - switchport allowed vlan
+STNV - switchport trunk native vlan
+
+Switching
+4 superheroes
+802.1q trunking
+802.1d stp
+802.1w rapid
+802.1s mistp
+hsrp, vrrp, glb - rich kid problem
+LACP: fusion
+
+CGMA (si gma) - channel-group 1 mode active
+CPL (cupal) - channel-protocl lacp
+
+HOW TO BE A NETWORK ENGINEER IN 2026:
+
+STEP1: 1 unique RESUME = 1 company
+youVERSION2.
+https://github.com/yowel19/SuperResumes
+
+use chatgpt to modify: resume as per JD
+
+step 2: big risks, big reward
+bill gates: windows pc, wala pa!
+elon musk: working rockets, wala pa!
+
+you: CCNA pasado:
+cash: 320 usd
+brains: 
